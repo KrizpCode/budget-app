@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import styled from 'styled-components';
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -12,9 +14,19 @@ const Home: NextPage = () => {
 
       <main>
         <h1 className="text-3xl font-bold underline">Hello world with Tailwind CSS Set-up!</h1>
+        <StyledButton>This is a button from Styled Components</StyledButton>
       </main>
     </div>
   );
 };
 
 export default Home;
+
+const StyledButton = styled.button`
+  background: red;
+  color: white;
+  font-size: 1em;
+  text-align: center;
+  padding: 0.25em 1em;
+  border: 2px solid black;
+`;

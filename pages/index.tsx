@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
+import tw from 'twin.macro';
 import styled from 'styled-components';
 
 const Home: NextPage = () => {
@@ -15,6 +15,8 @@ const Home: NextPage = () => {
       <main>
         <h1 className="text-3xl font-bold underline">Hello world with Tailwind CSS Set-up!</h1>
         <StyledButton>This is a button from Styled Components</StyledButton>
+        <TailwindButton>This is a button from TwinMacro</TailwindButton>
+        <ConditionalButton isRed={false}>Conditional TwinMacro element with Styled Components</ConditionalButton>
       </main>
     </div>
   );
@@ -30,3 +32,28 @@ const StyledButton = styled.button`
   padding: 0.25em 1em;
   border: 2px solid black;
 `;
+
+const TailwindButton = tw.button`
+  bg-red-500
+  hover:bg-red-700
+  text-white
+  font-bold
+  py-2
+  px-4
+  border
+  border-black
+  rounded
+`;
+
+const ConditionalButton = styled.button(({ isRed }: { isRed: boolean }) => [
+  isRed ? tw`bg-red-500 hover:bg-red-700` : tw`bg-blue-500 hover:bg-blue-700`,
+  tw`
+    text-white
+    font-bold
+    py-2
+    px-4
+    border
+    border-black
+    rounded
+  `,
+]);
